@@ -16,7 +16,7 @@ const roles2 = [
 
 module.exports = async (c, client, handler) => {
     try {
-        const channel = c.channels.cache.get('1259093985079857185');
+        const channel = c.channels.cache.get('1259763958546567268');
         if (!channel) {
             return;
         }
@@ -41,12 +41,17 @@ module.exports = async (c, client, handler) => {
                 row2.components.push(button);
             })
 
-            const message = await channel.send({
-                content: `Click the buttons, to get a role that suits you!`,
-                components: [row,row2]
+            let message = await channel.messages.fetch().then(messages => {
+                return messages.find(m => m.content === `Click the buttons, to get a role that suits you!`);
             });
 
-
+            if(!message){
+                message = await channel.send({
+                    content: `Click the buttons, to get a role that suits you!`,
+                    components: [row,row2]
+                });
+            }
+        
             const components = [ ...row.components, ...row2.components ];
 
 

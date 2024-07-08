@@ -18,15 +18,18 @@ module.exports = {
         ]
     },
 
-    run : ({interaction , client , handler})=>{
+    run : async ({interaction , client , handler})=>{
+        await interaction.deferReply();
         const num1 = interaction.options.get('first-number').value;
         const num2 = interaction.options.get('second-number').value;
         const ans = num1 + num2;
+        const reply = await interaction.fetchReply();
+        const ping = reply.createdTimestamp - interaction.createdTimestamp;
         if(ans==8){
-            interaction.reply(`YOU LITERALLY ATE!!`);
+            interaction.editReply(`YOU LITERALLY ATE!! , timestamp is ${ping} , timestamp : ${client.ws.ping}`);
         }
         else{
-            interaction.reply(`Your answer is ${ans} !!<3`);
+            interaction.editReply(`Your answer is ${ans} !!<3,  timestamp is ${ping} , timestamp : ${client.ws.ping}`);
         }
     }
 }
