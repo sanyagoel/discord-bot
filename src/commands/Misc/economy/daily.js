@@ -52,7 +52,7 @@ module.exports = {
              await user.save();
             
 
-             interaction.editReply('+1000 has been added into your account. /balance to check your total balance :3');
+             interaction.editReply('+1000 has been added into your account.  type balance in the chat or use the /check-balance command to check your total balance :3');
              return;
         }catch(err){
             console.log(err);
