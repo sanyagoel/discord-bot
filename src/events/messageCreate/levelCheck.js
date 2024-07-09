@@ -42,6 +42,9 @@ module.exports = async (message,client,handler)=>{
         const newLevel = user.level + 1;
        await message.channel.send(`CONGRATS ${message.author.username}, YOU HAVE UPGRADED FROM LEVEL ${user.level} to ${newLevel} <3`);
        user.xp = user.xp - ((user.level)*100);
+       if(user.xp < 0){
+        user.xp = 0;
+       }
         user.level = user.level + 1;
         await user.save();
         cooldown.add(message.author.id);

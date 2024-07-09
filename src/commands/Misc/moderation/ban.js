@@ -25,7 +25,7 @@ module.exports = {
         const targetUserId = interaction.options.get('mentionuser').value;
         const reason = interaction.options.get('reason')?.value || 'No reason provided';
 
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
         const target = await interaction.guild.members.fetch(targetUserId);
         //console.log(target);
         if(!target){

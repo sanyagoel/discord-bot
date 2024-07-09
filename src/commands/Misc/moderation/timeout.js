@@ -27,7 +27,7 @@ module.exports = {
     }
 
     , run : async ({interaction, client,handler})=>{
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
             const targetUserId = interaction.options.get('person').value;
             const reason = interaction.options.get('reason')?.value || 'Reason Not Provided';
             const duration = interaction.options.get('duration').value;

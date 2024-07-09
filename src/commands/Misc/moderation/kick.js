@@ -19,7 +19,7 @@ module.exports = {
     },
 
     run : async({interaction,client})=>{
-        await interaction.deferReply();
+        await interaction.deferReply({ ephemeral: true });
         const targetUserId = interaction.options.get('person').value;
         const reason = interaction.options.get('reason')?.value || 'No Reason Provided';
         
