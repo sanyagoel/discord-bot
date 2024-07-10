@@ -21,6 +21,10 @@ module.exports = {
         const guildID = interaction.guild.id;
         const target = await interaction.guild.members.fetch(userID);
         console.log(target);
+        if(!interaction.inGuild()){
+            interaction.reply('You can only run this command in a server!');
+            return;
+        }
         if(!target){
             interaction.editReply('User is not in the server...');
             return;
